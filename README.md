@@ -13,4 +13,11 @@ Paranoik provides a mechanism to backup different things on a server, like:
 * PostgreSQL Databases
 * etc.
 
-Separate components that define backup logic are called "backup providers". It is pretty easy to create new backup providers.
+Separate components that define backup logic are called "backup providers". It is pretty easy to create new backup providers. It is nothing more than a class that inherits from `Backupable` (something that can be backuped).
+
+Backup Providers
+----------------
+
+* Directory - allows to copy directories to another backup location.
+* MySQL - executes `mysqldump` and writes the output to a file.
+
