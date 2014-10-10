@@ -8,6 +8,8 @@ class Directory(Backupable):
 
     @property
     def path(self):
+        if self._path is None:
+            raise DirectoryError("Directory path is not set.")
         return self._path
 
     @path.setter
@@ -15,8 +17,6 @@ class Directory(Backupable):
         self._path = value
 
     def backup(self):
-        if self.path is None:
-            raise DirectoryError("Directory path is not set.")
         shutil.copytree(self.path, self.destination)
 
 

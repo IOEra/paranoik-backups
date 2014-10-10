@@ -1,6 +1,5 @@
 import os
 import unittest
-import shutil
 
 from paranoik.backup.providers.directory import Directory, DirectoryError
 from paranoik.backup.backupable import Backupable
