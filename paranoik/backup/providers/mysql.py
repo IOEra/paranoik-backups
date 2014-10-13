@@ -14,7 +14,7 @@ class MySQL(Backupable):
         return self._database
 
     @database.setter
-    def set_database(self, value):
+    def database(self, value):
         self._database = value
 
     @property
@@ -24,7 +24,7 @@ class MySQL(Backupable):
         return self._username
 
     @username.setter
-    def set_username(self, value):
+    def username(self, value):
         self._username = value
 
     @property
@@ -33,8 +33,8 @@ class MySQL(Backupable):
             raise ValueError("Password is not set.")
         return self._password
 
-    @username.setter
-    def set_password(self, value):
+    @password.setter
+    def password(self, value):
         self._password = value
 
     def backup(self):
