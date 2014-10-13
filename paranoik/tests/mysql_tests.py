@@ -1,4 +1,5 @@
 import unittest
+import mock
 
 from paranoik.backup.providers.mysql import MySQL
 from paranoik.backup.backupable import Backupable
@@ -23,3 +24,14 @@ class MySQLTests(unittest.TestCase):
         self.assertEquals(database.username, "test_username")
         database.password = "test_password"
         self.assertEquals(database.password, "test_password")
+
+    @mock.patch("paranoik.utils.command_executor.CommandExecutor")
+    @mock.patch("builtins.open")
+    def test_mysql_backup(self, CommandExecutor, FileOpen):
+        database = MySQL("Some database")
+        database.database = "test_database"
+        database.username = "test_username"
+        database.password = "test_password"
+        database.destination = "/file/path.sql"
+        database.backup()
+        print(CommandExecutor)
