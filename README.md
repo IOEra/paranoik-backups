@@ -19,5 +19,12 @@ Backup Providers
 ----------------
 
 * Directory - allows to copy directories to another backup location.
+
+    directory = Directory("Redmine source")
+    directory.path = "/path/to/directory"
+    directory.destination = "/backup/location"
+    directory.backup()
+
 * MySQL - executes `mysqldump` and writes the output to a file.
+
 
