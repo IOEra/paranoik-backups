@@ -42,3 +42,9 @@ Syncers
 -------
 
 Syncers primary task is to synchronize content that is locally available with remote services.
+
+```python
+    syncer = S3("your_access_key", "your_secret_key")
+    syncer.bucket = "bucket_name"
+    syncer.add_file(tar_file_path)
+```
