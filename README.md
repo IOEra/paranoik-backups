@@ -38,4 +38,7 @@ Backup Providers
     database.backup()
 ```
 
+Syncers
+-------
 
+Syncers primary task is to synchronize content that is locally available with remote services.
