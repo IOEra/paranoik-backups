@@ -1,7 +1,8 @@
 # .coveragerc to control coverage.py
 [run]
 branch = True
-omit = *mock*
+omit = *mock*, *boto*
+include = *paranoik*
 
 [report]
 # Regexes for lines to exclude from consideration
