@@ -18,7 +18,7 @@ class DirectoryTests(unittest.TestCase):
         directory.backup()
         self.assertTrue(os.path.exists("/tmp/dummy_test_backup_dir_backup"))
         os.rmdir("/tmp/dummy_test_backup_dir")
-        os.rmdir("/tmp/dummy_test_backup_dir_backup")
+        directory.cleanup()
         self.assertFalse(os.path.exists("/tmp/dummy_test_backup_dir_backup"))
 
     def test_backup_without_path_set(self):

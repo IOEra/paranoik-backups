@@ -17,3 +17,6 @@ class Backupable:
 
     def backup(self):
         raise NotImplementedError("Backup method needs to be overwritten.")
+
+    def cleanup(self):
+        raise NotImplementedError("Cleanup method needs to be overwritten.")

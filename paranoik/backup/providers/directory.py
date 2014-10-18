@@ -19,6 +19,9 @@ class Directory(Backupable):
     def backup(self):
         shutil.copytree(self.path, self.destination)
 
+    def cleanup(self):
+        shutil.rmtree(self.destination)
+
 
 class DirectoryError(Exception):
     pass

@@ -8,5 +8,9 @@ class BackupableTests(unittest.TestCase):
         backupable = Backupable("Some resource")
         self.assertRaises(NotImplementedError, lambda: backupable.backup())
 
+    def test_cleanup_method_raises_not_implemented_error(self):
+        backupable = Backupable("Some resource")
+        self.assertRaises(NotImplementedError, lambda: backupable.cleanup())
+
 if __name__ == '__main__':
     unittest.main()
