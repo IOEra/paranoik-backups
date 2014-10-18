@@ -4,7 +4,7 @@ import datetime
 from paranoik.backup.providers.mysql import MySQL
 from paranoik.backup.providers.directory import Directory
 from paranoik.compress.tar import Tar
-from paranoik.syncers.s3 import S3
+from paranoik.storage.s3 import S3
 
 
 backup_time = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")

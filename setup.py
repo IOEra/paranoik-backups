@@ -9,5 +9,5 @@ setup(
     keywords="backup",
     url="https://github.com/jordanjambazov/paranoik-backups",
     packages=['paranoik.backup', 'paranoik.backup.providers',
-              'paranoik.compress', 'paranoik.syncers', 'paranoik.utils'],
+              'paranoik.compress', 'paranoik.storage', 'paranoik.utils'],
 )
