@@ -25,7 +25,7 @@ class S3:
         return self._bucket_name
 
     @bucket.setter
-    def set_bucket(self, bucket_name):
+    def bucket(self, bucket_name):
         self._bucket_name = bucket_name
 
     def add_file(self, file_path):
