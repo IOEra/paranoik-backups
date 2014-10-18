@@ -38,13 +38,13 @@ Backup Providers
     database.backup()
 ```
 
-Syncers
+Storage
 -------
 
-Syncers primary task is to synchronize content that is locally available with remote services.
+The purpose of storage providers is to provide interface to different data stores.
 
 ```python
-    syncer = S3("your_access_key", "your_secret_key")
-    syncer.bucket = "bucket_name"
-    syncer.add_file(tar_file_path)
+    storage = S3("your_access_key", "your_secret_key")
+    storage.bucket = "bucket_name"
+    storage.add_file(tar_file_path)
 ```
