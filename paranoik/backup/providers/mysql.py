@@ -43,7 +43,8 @@ class MySQL(Backupable):
         with open(self.destination, 'w') as dump_file:
             command = ["mysqldump", "-u", self.username, "-p" + self.password,
                        self.database]
-            CommandExecutor.execute(command, stdout=dump_file)
+            executor = CommandExecutor(command, stdout=dump_file)
+            executor.execute()
 
     def cleanup(self):
         os.remove(self.destination)

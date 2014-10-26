@@ -1,7 +1,9 @@
+#pylint: skip-file
 import unittest
 import mock
 
 from paranoik.utils.command_executor import CommandExecutor
+
 
 class DummyProcess:
     def __init__(self):
@@ -18,8 +20,8 @@ class CommandExecutorTests(unittest.TestCase):
     @mock.patch("subprocess.Popen")
     def test_command_execution(self, Popen):
         Popen.return_value = DummyProcess()
-        command = CommandExecutor()
-        status = command.execute(["ls", "/"])
+        command = CommandExecutor(["ls", "/"])
+        status = command.execute()
         self.assertEquals(status.output, "stdout")
         self.assertEquals(status.error, "stderr")
         self.assertEquals(status.returncode, 0)

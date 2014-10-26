@@ -1,3 +1,4 @@
+#pylint: skip-file
 import unittest
 
 from paranoik.backup.backupable import Backupable
