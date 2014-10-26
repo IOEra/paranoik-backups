@@ -1,3 +1,5 @@
+import os
+
 from paranoik.backup.backupable import Backupable
 from paranoik.utils.command_executor import CommandExecutor
 
@@ -41,4 +43,7 @@ class MySQL(Backupable):
         with open(self.destination, 'w') as dump_file:
             command = ["mysqldump", "-u", self.username, "-p" + self.password,
                        self.database]
-            dump_status = CommandExecutor.execute(command, stdout=dump_file)
+            CommandExecutor.execute(command, stdout=dump_file)
+
+    def cleanup(self):
+        os.remove(self.destination)
