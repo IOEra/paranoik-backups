@@ -1,1 +1,3 @@
-__author__ = 'jordan'
+"""
+Module contains backup providers.
+"""

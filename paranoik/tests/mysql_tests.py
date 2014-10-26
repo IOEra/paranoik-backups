@@ -28,11 +28,16 @@ class MySQLTests(unittest.TestCase):
 
     @mock.patch("paranoik.utils.command_executor.CommandExecutor")
     @mock.patch("builtins.open")
-    def test_mysql_backup(self, CommandExecutor, FileOpen):
+    @mock.patch("os.remove")
+    def test_mysql_backup(self, remove, open, command_executor):
         database = MySQL("Some database")
         database.database = "test_database"
         database.username = "test_username"
         database.password = "test_password"
         database.destination = "/file/path.sql"
+        self.assertFalse(open.called)
         database.backup()
-        print(CommandExecutor)
+        self.assertTrue(open.called)
+        self.assertFalse(remove.called)
+        database.cleanup()
+        self.assertTrue(remove.called)
