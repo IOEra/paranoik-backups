@@ -21,7 +21,7 @@ class Directory(Backupable):
         :return:
         """
         if self._path is None:
-            raise DirectoryError("Directory path is not set.")
+            raise DirectoryBackupError("Directory path is not set.")
         return self._path
 
     @path.setter
@@ -48,7 +48,7 @@ class Directory(Backupable):
         shutil.rmtree(self.destination)
 
 
-class DirectoryError(Exception):
+class DirectoryBackupError(Exception):
     """
     Exception raised when something goes wrong during directory backup.
     """
