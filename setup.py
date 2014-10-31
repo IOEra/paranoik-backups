@@ -1,4 +1,7 @@
-from setuptools import setup
+from setuptools import setup, find_packages
+
+
+EXCLUDE_FROM_PACKAGES = ['paranoik.tests']
 
 
 setup(
@@ -8,6 +11,5 @@ setup(
     author_email="jordan.jambazov@gmail.com",
     keywords="backup",
     url="https://github.com/jordanjambazov/paranoik-backups",
-    packages=['paranoik.backup', 'paranoik.backup.providers',
-              'paranoik.compress', 'paranoik.storage', 'paranoik.utils'],
+    packages=find_packages(exclude=EXCLUDE_FROM_PACKAGES)
 )
