@@ -35,10 +35,8 @@ tar_file_path = os.path.join("/root", "backup", tar_file_name)
 tar = TarCompressor(tar_file_path)
 tar.add(BACKUP_DIR)
 tar.close()
-# Here maybe it will be better to have just one method tar.compress()
-# that makes everything.
 
 # Upload to S3
 syncer = S3("your_access_key", "your_secret_key")
 syncer.bucket = "bucket_name"
-syncer.add_file(tar_file_path)  # More accurately is syncer.upload(tar_file).
+syncer.add_file(tar_file_path)
