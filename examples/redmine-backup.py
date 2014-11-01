@@ -19,9 +19,6 @@ database.database = "redmine"
 database.username = "redmine"
 database.password = ""
 database.destination = database_file
-# All of the above could be represented as arguments of the function:
-# database.backup(database, username, password, destination). I think
-# it will be more short and comfortable.
 database.backup()
 
 # Backup directories
