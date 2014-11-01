@@ -6,7 +6,7 @@ EXCLUDE_FROM_PACKAGES = ['paranoik.tests']
 
 setup(
     name="Paranoik",
-    version="0.0.1",
+    version="0.0.2",
     author="Jordan Jambazov",
     author_email="jordan.jambazov@gmail.com",
     keywords="backup",
