@@ -29,8 +29,7 @@ class Backupable:
         """
         if self._destination is None:
             raise ValueError("Backup destination for {0} is not set.".format(
-                self._resource_name
-            ))
+                self._resource_name))
         return self._destination
 
     @destination.setter

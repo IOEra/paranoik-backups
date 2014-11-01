@@ -21,8 +21,10 @@ class MySQLTests(unittest.TestCase):
         database = MySQL("Some database")
         database.database = "test_database"
         self.assertEquals(database.database, "test_database")
+
         database.username = "test_username"
         self.assertEquals(database.username, "test_username")
+
         database.password = "test_password"
         self.assertEquals(database.password, "test_password")
 
@@ -35,9 +37,11 @@ class MySQLTests(unittest.TestCase):
         database.username = "test_username"
         database.password = "test_password"
         database.destination = "/file/path.sql"
+
         self.assertFalse(open.called)
         database.backup()
         self.assertTrue(open.called)
+
         self.assertFalse(remove.called)
         database.cleanup()
         self.assertTrue(remove.called)

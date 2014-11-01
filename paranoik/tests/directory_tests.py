@@ -2,7 +2,7 @@
 import os
 import unittest
 
-from paranoik.backup.providers.directory import Directory, DirectoryError
+from paranoik.backup.providers.directory import Directory, DirectoryBackupError
 from paranoik.backup.backupable import Backupable
 
 
@@ -24,7 +24,7 @@ class DirectoryTests(unittest.TestCase):
 
     def test_backup_without_path_set(self):
         directory = Directory("Some random directory")
-        self.assertRaises(DirectoryError, lambda: directory.backup())
+        self.assertRaises(DirectoryBackupError, lambda: directory.backup())
 
     def test_backup_without_destination(self):
         directory = Directory("Directory with images")

@@ -6,7 +6,7 @@ import os
 import tarfile
 
 
-class Tar:
+class TarCompressor:
     """
     Compressor that allows to easily add files to an archive.
     """
