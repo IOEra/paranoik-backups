@@ -48,3 +48,19 @@ The purpose of storage providers is to provide interface to different data store
     storage.bucket = "bucket_name"
     storage.add_file(tar_file_path)
 ```
+
+Suites
+------
+
+Backup suites allow you to group multiple backupable objects in a single backup scenario.
+Lets assume that we would like to group the directory and database backups.
+
+```python
+    suite = BackupSuite("Issue Tracker Backup")
+    suite.add_backupable(directory)
+    suite.add_backupable(database)
+    suite.run()
+```
+
+When the `run` method is invoked, the suite will iteratively call the `backup` methods
+of each backupable object and iteratively do the cleanup.
