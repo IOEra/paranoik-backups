@@ -43,10 +43,18 @@ Storage
 
 The purpose of storage providers is to provide interface to different data stores.
 
+*S3 Storage*
 ```python
     storage = S3("your_access_key", "your_secret_key")
     storage.bucket = "bucket_name"
     storage.add_file(tar_file_path)
+```
+
+*FTP Storage*
+```python
+    ftp = FTP("ftp.example.com", "username", "password")
+    ftp.add_file("/path/to/file.tar.gz")
+    ftp.close()
 ```
 
 Suites
