@@ -2,6 +2,7 @@
 import unittest
 import mock
 
+from paranoik.utils.compatibility import BUILTIN
 from paranoik.backup.providers.mysql import MySQL
 from paranoik.backup.backupable import Backupable
 
@@ -29,7 +30,7 @@ class MySQLTests(unittest.TestCase):
         self.assertEquals(database.password, "test_password")
 
     @mock.patch("paranoik.utils.command_executor.CommandExecutor")
-    @mock.patch("builtins.open")
+    @mock.patch("{0}.open".format(BUILTIN))
     @mock.patch("os.remove")
     def test_mysql_backup(self, remove, open, command_executor):
         database = MySQL("Some database")
