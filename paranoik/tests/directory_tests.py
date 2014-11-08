@@ -9,7 +9,7 @@ from paranoik.backup.backupable import Backupable
 class DirectoryTests(unittest.TestCase):
     def test_directory_is_backupable(self):
         directory = Directory("Some important directory")
-        self.assertIsInstance(directory, Backupable)
+        self.assertTrue(isinstance(directory, Backupable))
 
     def test_perform_backup(self):
         os.mkdir("/tmp/dummy_test_backup_dir")

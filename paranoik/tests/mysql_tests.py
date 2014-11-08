@@ -10,7 +10,7 @@ from paranoik.backup.backupable import Backupable
 class MySQLTests(unittest.TestCase):
     def test_database_is_backupable(self):
         database = MySQL("Some database")
-        self.assertIsInstance(database, Backupable)
+        self.assertTrue(isinstance(database, Backupable))
 
     def test_required_fields_not_set(self):
         database = MySQL("Some database")
