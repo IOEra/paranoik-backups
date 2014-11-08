@@ -72,3 +72,8 @@ Lets assume that we would like to group the directory and database backups.
 
 When the `run` method is invoked, the suite will iteratively call the `backup` methods
 of each backupable object and iteratively do the cleanup.
+
+Compatibility
+=============
+
+Paranoik Backups is compatible with the Python >= 2.6 and Python >= 3.0
