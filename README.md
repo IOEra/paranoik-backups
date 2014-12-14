@@ -78,4 +78,4 @@ Compatibility
 
 Paranoik Backups is compatible with the Python >= 2.6 and Python >= 3.0
 
-![Paranoik Build Status](https://travis-ci.org/jordanjambazov/paranoik-backups.svg?branch=master)
+![Paranoik Build Status](https://travis-ci.org/codeideo/paranoik-backups.svg?branch=master)
