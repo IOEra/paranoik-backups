@@ -3,9 +3,11 @@ Contains the interface used by backup providers.
 """
 
 from abc import ABCMeta, abstractmethod
+from six import add_metaclass
 
 
-class Backupable(metaclass=ABCMeta):
+@add_metaclass(ABCMeta)
+class Backupable(object):
     """
     Interface for all items that can be backed up.
     """
