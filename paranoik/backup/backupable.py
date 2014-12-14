@@ -2,8 +2,10 @@
 Contains the interface used by backup providers.
 """
 
+from abc import ABCMeta, abstractmethod
 
-class Backupable:
+
+class Backupable(metaclass=ABCMeta):
     """
     Interface for all items that can be backed up.
     """
@@ -41,17 +43,19 @@ class Backupable:
         """
         self._destination = value
 
+    @abstractmethod
     def backup(self):
         """
         Procedure that needs to be overwritten by backup providers. Defines
         the way specific backup operation is performed.
         :return:
         """
-        raise NotImplementedError("Backup method needs to be overwritten.")
+        pass
 
+    @abstractmethod
     def cleanup(self):
         """
         Removes unneeded artifacts that have been created during backup.
         :return:
         """
-        raise NotImplementedError("Cleanup method needs to be overwritten.")
+        pass
