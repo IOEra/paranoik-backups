@@ -16,7 +16,8 @@ CONFIG_FILES = (
 @Singleton
 class ConfigReader:
     """
-    Singleton class for reading configuration Paranoik files.
+    Singleton class for reading configuration Paranoik files. Configuration
+    is read from the multiple configuration files.
     """
     def __init__(self):
         self._config = ConfigParser()
