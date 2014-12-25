@@ -7,23 +7,18 @@ from paranoik.notifiers.notification import NotificationBase
 
 class EmailNotification(NotificationBase):
 
-    @staticmethod
-    def _prepare_plaintext_message():
-        return "Hi!\nHow are you?\nHere is the link you wanted:\nhttps://www.python.org"
+    def _prepare_plaintext_message(self):
+        return self._message
 
-    @staticmethod
-    def _prepare_html_message():
+    def _prepare_html_message(self):
         return """\
         <html>
           <head></head>
           <body>
-            <p>Hi!<br>
-               How are you?<br>
-               Here is the <a href="https://www.python.org">link</a> you wanted.
-            </p>
+            <p>{0}</p>
           </body>
         </html>
-        """
+        """.format(self._message)
 
     def send(self):
         email_from = self._config.read("email", "email_from")
@@ -34,7 +29,7 @@ class EmailNotification(NotificationBase):
         smtp_password = self._config.read("email", "smtp_password")
 
         message = MIMEMultipart('alternative')
-        message['Subject'] = "Link"
+        message['Subject'] = self._title
         message['From'] = email_from
         message['To'] = email_recipients
 

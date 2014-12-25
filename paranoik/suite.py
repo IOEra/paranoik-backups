@@ -2,6 +2,8 @@
 Suites allow grouping of multiple backup providers.
 """
 
+from paranoik.notifiers.mail import EmailNotification
+
 
 class BackupSuite:
     """
@@ -23,6 +25,9 @@ class BackupSuite:
         """
         self._backupables.append(backupable)
 
+    def add_backupables(self, backupables):
+        self._backupables += backupables
+
     def _backup_backupables(self):
         """
         Performs backup on all backupable objects.
@@ -39,6 +44,19 @@ class BackupSuite:
         for backupable in self._backupables:
             backupable.cleanup()
 
+    def _notify(self, success=False, error=None):
+        """
+        :return:
+        """
+        if success:
+            title = "Successful Paranoik Backup"
+            message = "Your Paranoik Backup was successfully executed."
+        else:
+            title = "Failed Paranoik Backup"
+            message = "Your Paranoik Backup failed: {0}".format(error)
+        notification = EmailNotification(title, message)
+        notification.send()
+
     def run(self):
         """
         Runs the backup suite and performs backup on all backupable objects
@@ -46,5 +64,11 @@ class BackupSuite:
         group, cleanup is performed.
         :return:
         """
-        self._backup_backupables()
-        self._cleanup_backupables()
+        try:
+            self._backup_backupables()
+            self._cleanup_backupables()
+            self._notify(success=True)
+        except Exception as err:
+            import traceback
+            error = traceback.format_exc()
+            self._notify(success=False, error=error)
