@@ -15,6 +15,8 @@ Paranoik provides a mechanism to backup different things on a server, like:
 
 Separate components that define backup logic are called "backup providers". It is pretty easy to create new backup providers. It is nothing more than a class that inherits from `Backupable` (something that can be backuped).
 
+Paranoik is meant to be extremely configurable and extensible. A configuration file exists, so that you could easily adjust its settings: `~/.paranoik.conf` and `/etc/paranoik.conf`. By default, its configuration applies, which could be found at `paranoik/paranoik.conf`.
+
 Backup Providers
 ----------------
 
@@ -72,6 +74,14 @@ Lets assume that we would like to group the directory and database backups.
 
 When the `run` method is invoked, the suite will iteratively call the `backup` methods
 of each backupable object and iteratively do the cleanup.
+
+Notifications
+-------------
+
+Paranoik provides you with a neat mechanism to send notifications. Currently only email
+notifications are implemented, but the design of the notification system allows you to 
+extend it with any kind of notifications you would like to send. You just need to implement
+a simple interface. If you would like to enable notifications, simply modify the configuration file.
 
 Compatibility
 =============
