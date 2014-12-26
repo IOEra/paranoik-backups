@@ -4,7 +4,12 @@ developer to read options from different configuration files.
 """
 
 import os
-from configparser import ConfigParser
+
+try:
+    from configparser import ConfigParser
+except ImportError:
+    from ConfigParser import ConfigParser
+
 from paranoik.utils.singleton import Singleton
 from paranoik import PARANOIK_MODULE_DIR
 
