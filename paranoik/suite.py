@@ -2,7 +2,8 @@
 Suites allow grouping of multiple backup providers.
 """
 
-from paranoik.notifiers.mail import EmailNotification
+from paranoik.notifiers.broadcaster import NotificationBroadcaster
+from paranoik.config.config_reader import ConfigReader
 
 
 class BackupSuite:
@@ -14,6 +15,7 @@ class BackupSuite:
         :param suite_name: Name of the suite
         :return:
         """
+        self._config = ConfigReader.get_instance()
         self._suite_name = suite_name
         self._backupables = []
 
@@ -52,10 +54,12 @@ class BackupSuite:
             title = "Successful Paranoik Backup"
             message = "Your Paranoik Backup was successfully executed."
         else:
+            import traceback
+            error = traceback.format_exc()
             title = "Failed Paranoik Backup"
             message = "Your Paranoik Backup failed: {0}".format(error)
-        notification = EmailNotification(title, message)
-        notification.send()
+        broadcaster = NotificationBroadcaster()
+        broadcaster.broadcast(title, message)
 
     def run(self):
         """
@@ -64,11 +68,12 @@ class BackupSuite:
         group, cleanup is performed.
         :return:
         """
+        notify = self._config.read("notifiers", "notify", data_type=bool)
         try:
             self._backup_backupables()
             self._cleanup_backupables()
-            self._notify(success=True)
-        except Exception as err:
-            import traceback
-            error = traceback.format_exc()
-            self._notify(success=False, error=error)
+            if notify:
+                self._notify(success=True)
+        except Exception:
+            if notify:
+                self._notify(success=False)
