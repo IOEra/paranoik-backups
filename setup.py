@@ -6,10 +6,13 @@ EXCLUDE_FROM_PACKAGES = ['paranoik.tests']
 
 setup(
     name="Paranoik",
-    version="0.0.6",
+    version="0.0.7",
     author="Jordan Jambazov",
-    author_email="jordan.jambazov@gmail.com",
+    author_email="jordan.jambazov@codeideo.com",
     keywords="backup",
-    url="https://github.com/jordanjambazov/paranoik-backups",
-    packages=find_packages(exclude=EXCLUDE_FROM_PACKAGES)
+    url="https://github.com/codeideo/paranoik-backups",
+    packages=find_packages(exclude=EXCLUDE_FROM_PACKAGES),
+    install_requires=[
+        "six"
+    ]
 )
