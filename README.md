@@ -83,6 +83,13 @@ notifications are implemented, but the design of the notification system allows 
 extend it with any kind of notifications you would like to send. You just need to implement
 a simple interface. If you would like to enable notifications, simply modify the configuration file.
 
+
+Contribution
+============
+If you would like to contribute to the project, feel free to submit issue or provide
+a pull request.
+
+
 Compatibility
 =============
 
