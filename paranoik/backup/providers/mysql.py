@@ -105,7 +105,7 @@ class MySQL(Backupable):
         with open(self.destination, 'w') as dump_file:
             command = [
                 "mysqldump", "-u", self.username,
-                "--password='{0}'".format(self.password),
+                "--password={0}".format(self.password),
                 "-h", self.host, self.database
             ]
             executor = CommandExecutor(command, stdout=dump_file)
