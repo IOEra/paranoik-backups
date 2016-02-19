@@ -48,7 +48,7 @@ class MySQL(Backupable):
             return "localhost"
         return self._host
 
-    @database.setter
+    @host.setter
     def host(self, value):
         """
         Setter of the host name.
