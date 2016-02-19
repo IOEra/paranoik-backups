@@ -15,6 +15,7 @@ class MySQL(Backupable):
     """
 
     _database = None
+    _host = None
     _username = None
     _password = None
 
@@ -36,6 +37,26 @@ class MySQL(Backupable):
         :return:
         """
         self._database = value
+
+    @property
+    def host(self):
+        """
+        Getter of the host name.
+        :return:
+        """
+        if self._host is None:
+            return "localhost"
+        return self._host
+
+    @database.setter
+    def host(self, value):
+        """
+        Setter of the host name.
+        :param value:
+        :return:
+        """
+        self._host = value
+
 
     @property
     def username(self):
@@ -82,8 +103,10 @@ class MySQL(Backupable):
         :return:
         """
         with open(self.destination, 'w') as dump_file:
-            command = ["mysqldump", "-u", self.username, "-p" + self.password,
-                       self.database]
+            command = [
+                "mysqldump", "-u", self.username, "-p" + self.password,
+                "-h", self.host, self.database
+            ]
             executor = CommandExecutor(command, stdout=dump_file)
             executor.execute()
 
